@@ -1,5 +1,3 @@
-require 'rspec'
-require 'rack/test'
 require ::File.expand_path('../../config/application',  __FILE__)
 
 describe 'Elsm' do
