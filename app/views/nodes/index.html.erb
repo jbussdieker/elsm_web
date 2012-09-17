@@ -1,0 +1,14 @@
+<table class="table">
+  <tr>
+    <th>Name</th>
+    <th>Instance</th>
+    <th>Puppet</th>
+  </tr>
+  <% @nodes.each do |node| %>
+    <tr>
+      <td><%= link_to node.name, node %></td>
+      <td><%= node.instance.status if node.instance %></td>
+      <td><%= node.status %></td>
+    </tr>
+  <% end %>
+</table>
