@@ -37,6 +37,18 @@ class Node
     name.gsub(".", "_")
   end
 
+  def run(agent, action, options={}, args={})
+    src = "http://localhost:8089/#{agent}/#{action}?"
+    src += "options=#{CGI.escape options.to_json}&args=#{CGI.escape args.to_json}"
+    url = URI.parse(src)
+    req = Net::HTTP::Get.new(url.request_uri)
+    http = Net::HTTP.new(url.host, url.port)
+    http.read_timeout = options[:timeout] || 15
+    http.open_timeout = 15
+    resp = http.request(req)
+    return JSON.parse(resp.body) 
+  end
+
   def initialize(n)
     @@config ||= YAML::load(File.open("/etc/elsm.yml"))
     @@compute ||= Elsm::Compute.new(:aws, @@config[:aws])
