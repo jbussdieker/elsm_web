@@ -7,7 +7,7 @@ class NodesController < ApplicationController
 
   def graph
     @node = Node.find(params[:id])
-    resp = Net::HTTP.get(URI.parse("http://localhost:8080/render?width=460&height=320&target=#{params[:target]}"))
+    resp = Net::HTTP.get(URI.parse("http://localhost:8080/render?from=-2h&width=460&height=320&target=#{params[:target]}"))
     send_data(resp, :type => "image/png")
   end
 
