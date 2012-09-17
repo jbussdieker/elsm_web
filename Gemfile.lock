@@ -1,3 +1,10 @@
+GIT
+  remote: git://github.com/jbussdieker/elsm.git
+  revision: 1f9f1d9dc0eb120356a170a277c0da8615f3e7c3
+  branch: master
+  specs:
+    elsm (0.0.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -42,7 +49,6 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.3.3)
-    elsm (0.0.1)
     erubis (2.7.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
@@ -117,7 +123,7 @@ PLATFORMS
 DEPENDENCIES
   aws-sdk
   coffee-rails (~> 3.2.1)
-  elsm
+  elsm!
   jquery-rails
   mysql2
   rails (= 3.2.8)
