@@ -1,0 +1,10 @@
+<table class="table">
+  <tr>
+    <th>Name</th><th>Status</th>
+  </tr>
+  <% @node.run("monit", "summary").first["data"]["processes"].each do |process| %>
+    <tr>
+      <td><%= process[0] %></td><td><%= generic_badge(process[1]) %></td>
+    </tr>
+  <% end %>
+</table>

@@ -7,8 +7,8 @@
   <% @nodes.each do |node| %>
     <tr>
       <td><%= link_to node.name, node %></td>
-      <td><%= node.instance.status if node.instance %></td>
-      <td><%= node.status %></td>
+      <td><%= generic_badge(node.instance.status) if node.instance %></td>
+      <td><%= generic_badge(node.status) %></td>
     </tr>
   <% end %>
 </table>

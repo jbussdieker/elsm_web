@@ -1,7 +1,9 @@
-<h3><%= @node.name %></h3>
-<img src="<%= "#{node_path(@node)}/graph?target=stats.#{@node.name.split(".").first}.cpu.*.*.user.*" %>"></img>
-<img src="<%= "#{node_path(@node)}/graph?target=stats.#{@node.name.split(".").first}.memory.*.*.*" %>"></img><br>
-<h3>Monit</h3>
-<% @node.run("monit", "summary").first["data"]["processes"].each do |process| %>
-  <%= process[0] %> - <%= process[1] %><br>
-<% end %>
+<h2><%= @node.name %></h2>
+<p>
+  <%= link_to "Back", nodes_path, class: "btn" %>
+</p>
+<ul class="nav nav-tabs">
+  <li class="<%= "active" if params[:view] == "graphs" %>"><%= link_to "Graphs", "?view=graphs" %></li>
+  <li class="<%= "active" if params[:view] == "monit" %>"><%= link_to "Monit", "?view=monit" %></li>
+</ul>
+<%= render params[:view] || "graphs" %>
